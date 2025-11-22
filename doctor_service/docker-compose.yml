@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: telemed_mongo
+    restart: unless-stopped
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+
+  doctor-service:
+    build: .
+    container_name: doctor_service
+    restart: unless-stopped
+    depends_on:
+      - mongo
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/doctorDB
+      - PORT=5000
+      - JWT_SECRET=your_jwt_secret_here
+    ports:
+      - "5000:5000"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--spider", "http://127.0.0.1:5000/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+
+volumes:
+  mongo_data:

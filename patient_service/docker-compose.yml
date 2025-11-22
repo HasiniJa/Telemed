@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  patient-db:
+    image: mongo:7
+    container_name: patient-db
+    ports:
+      - "27017:27017"
+    volumes:
+      - patient-db-data:/data/db
+
+  patient-service:
+    build: ./patient_service
+    container_name: patient-service
+    ports:
+      - "4000:4000"
+    environment:
+      - MONGO_URI=mongodb://patient-db:27017/patientdb
+      - JWT_SECRET=your_jwt_secret_here
+      - PORT=4000
+    depends_on:
+      - patient-db
+
+volumes:
+  patient-db-data:
