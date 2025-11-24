@@ -1,6 +1,6 @@
 const express = require("express");
 const connectDB = require("./utils/db");
-const routes = require("./routes/notification_routes");
+const routes = require("./routes/notificationroutes");
 
 require("dotenv").config();
 connectDB();
