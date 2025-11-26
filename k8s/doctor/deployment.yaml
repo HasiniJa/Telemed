@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: doctor-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: doctor
+  template:
+    metadata:
+      labels:
+        app: doctor
+    spec:
+      containers:
+      - name: doctor
+        image: doctor:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+        env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: doctor-config
+              key: PORT
+        - name: MONGO_URI
+          valueFrom:
+            secretKeyRef:
+              name: doctor-secret
+              key: MONGO_URI
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: doctor-secret
+              key: JWT_SECRET
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
