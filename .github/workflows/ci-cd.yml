@@ -1,0 +1,63 @@
+name: Telemed CI/CD Pipeline
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  build-test-deploy:
+    runs-on: self-hosted   # Uses your local runner
+    env:
+      MINIKUBE_REGISTRY: localhost:5000
+
+    steps:
+    # 1️⃣ Checkout repo
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # 2️⃣ Set up Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: "18"
+
+    # 3️⃣ Loop through microservices
+    - name: Build, Test, Deploy Microservices
+      run: |
+        SERVICES=("appointment" "patient" "notification")
+        for SERVICE in "${SERVICES[@]}"
+        do
+          echo "======================================"
+          echo "Processing $SERVICE service..."
+          echo "======================================"
+
+          # Install dependencies
+          cd $SERVICE
+          npm install
+
+          # Run tests
+          npm test
+          cd ..
+
+          # Build Docker image
+          docker build -t $MINIKUBE_REGISTRY/$SERVICE-service:latest ./$SERVICE
+
+          # Push Docker image to Minikube registry
+          docker push $MINIKUBE_REGISTRY/$SERVICE-service:latest
+
+          # Update Kubernetes manifests with new image
+          sed -i "s|image:.*|image: $MINIKUBE_REGISTRY/$SERVICE-service:latest|" k8s/$SERVICE/deployment.yaml
+
+          # Deploy to Kubernetes
+          kubectl apply -f k8s/$SERVICE/deployment.yaml
+          kubectl apply -f k8s/$SERVICE/service.yaml
+
+          # Check rollout status
+          kubectl rollout status deployment/$SERVICE-deployment --timeout=120s
+        done
+
+    # 4️⃣ Smoke test (optional)
+    - name: Verify deployments
+      run: |
+        kubectl get pods
+        kubectl get svc
