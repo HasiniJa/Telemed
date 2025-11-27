@@ -3,24 +3,16 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const appoinmentroutes = require('./routes/appoinmentroutes');
 
-dotenv.config();
+require("dotenv").config();
+const mongoose = require("mongoose");
+const app = require("./src/app");
 
-const app = express();
-app.use(express.json());
-
-// Root route
-app.get('/', (req, res) => {
-  res.send('Server is running!');
-});
-
-// Mount appointment routes
-app.use('/api/appoinments', appoinmentroutes);
-
-// MongoDB connection
-mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('MongoDB connected'))
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log("Appointment Service DB connected");
+    const PORT = process.env.PORT || 5003;
+    app.listen(PORT, () =>
+      console.log(`Appointment Service running on port ${PORT}`)
+    );
+  })
   .catch(err => console.error(err));
-
-// Start server
-const PORT = process.env.PORT || 5001;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
