@@ -6,58 +6,73 @@ on:
 
 jobs:
   build-test-deploy:
-    runs-on: self-hosted   # Uses your local runner
+    runs-on: self-hosted   # your self-hosted Windows runner
     env:
       MINIKUBE_REGISTRY: localhost:5000
 
     steps:
-    # 1️⃣ Checkout repo
-    - name: Checkout code
-      uses: actions/checkout@v3
+      # 1️. Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    # 2️⃣ Set up Node.js
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: "18"
+      # 2️.Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
 
-    # 3️⃣ Loop through microservices
-    - name: Build, Test, Deploy Microservices
-      run: |
-        SERVICES=("appointment" "patient" "notification")
-        for SERVICE in "${SERVICES[@]}"
-        do
-          echo "======================================"
-          echo "Processing $SERVICE service..."
-          echo "======================================"
+      # 3️. Build, Test, Deploy
+      - name: Build, Test, Deploy Microservices
+        shell: pwsh
+        run: |
+          $services = @("appointment", "patient", "notification")
 
-          # Install dependencies
-          cd $SERVICE
-          npm install
+          foreach ($service in $services) {
+              Write-Host "======================================"
+              Write-Host "Processing $service service..."
+              Write-Host "======================================"
 
-          # Run tests
-          npm test
-          cd ..
+              # Go to service folder
+              Set-Location $service
 
-          # Build Docker image
-          docker build -t $MINIKUBE_REGISTRY/$SERVICE-service:latest ./$SERVICE
+              # Install dependencies
+              Write-Host "Installing dependencies for $service..."
+              npm install
 
-          # Push Docker image to Minikube registry
-          docker push $MINIKUBE_REGISTRY/$SERVICE-service:latest
+              # Run tests
+              Write-Host "Running tests for $service..."
+              npm test
 
-          # Update Kubernetes manifests with new image
-          sed -i "s|image:.*|image: $MINIKUBE_REGISTRY/$SERVICE-service:latest|" k8s/$SERVICE/deployment.yaml
+              # Return to root
+              Set-Location ..
 
-          # Deploy to Kubernetes
-          kubectl apply -f k8s/$SERVICE/deployment.yaml
-          kubectl apply -f k8s/$SERVICE/service.yaml
+              # Build Docker image
+              Write-Host "Building Docker image for $service..."
+              docker build -t $env:MINIKUBE_REGISTRY/$service-service:latest .\$service
 
-          # Check rollout status
-          kubectl rollout status deployment/$SERVICE-deployment --timeout=120s
-        done
+              # Push Docker image
+              Write-Host "Pushing Docker image for $service..."
+              docker push $env:MINIKUBE_REGISTRY/$service-service:latest
 
-    # 4️⃣ Smoke test (optional)
-    - name: Verify deployments
-      run: |
-        kubectl get pods
-        kubectl get svc
+              # Update Kubernetes deployment manifest with new image
+              Write-Host "Updating Kubernetes manifest for $service..."
+              (Get-Content "k8s\$service\deployment.yaml") -replace 'image:.*', "image: $env:MINIKUBE_REGISTRY/$service-service:latest" | Set-Content "k8s\$service\deployment.yaml"
+
+              # Deploy to Kubernetes
+              Write-Host "Deploying $service to Kubernetes..."
+              kubectl apply -f "k8s\$service\deployment.yaml"
+              kubectl apply -f "k8s\$service\service.yaml"
+
+              # Wait for rollout
+              Write-Host "Waiting for $service deployment rollout..."
+              kubectl rollout status deployment/$service-deployment --timeout=120s
+          }
+
+      # 4️. Verify deployments (optional)
+      - name: Verify deployments
+        shell: pwsh
+        run: |
+          Write-Host "Pods in cluster:"
+          kubectl get pods
+          Write-Host "Services in cluster:"
+          kubectl get svc
