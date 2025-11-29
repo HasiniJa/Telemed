@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
       - name: doctor
-        image: doctor:latest
-        imagePullPolicy: IfNotPresent
+        image: ghcr.io/HasiniJa/Telemed/doctor:latest
+        imagePullPolicy: Always
         ports:
         - containerPort: 5000
         env:

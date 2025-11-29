@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: appointment-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: appointment
+  template:
+    metadata:
+      labels:
+        app: appointment
+    spec:
+      containers:
+      - name: appointment
+        image: ghcr.io/HasiniJa/Telemed/appointment:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 5001
+        env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: appointment-config
+              key: PORT
+        - name: MONGO_URI
+          valueFrom:
+            secretKeyRef:
+              name: appointment-secret
+              key: MONGO_URI
+        - name: JWT_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: appointment-secret
+              key: JWT_SECRET
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"

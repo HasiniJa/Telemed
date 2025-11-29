@@ -14,8 +14,9 @@ spec:
     spec:
       containers:
       - name: notification
-        image: notification:latest
-        imagePullPolicy: IfNotPresent
+        image: ghcr.io/HasiniJa/Telemed/notification:latest
+        imagePullPolicy: Always
+      
         ports:
         - containerPort: 5002
         env:

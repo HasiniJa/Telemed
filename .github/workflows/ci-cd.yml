@@ -1,78 +1,56 @@
-name: Telemed CI/CD Pipeline
+name: CI/CD Pipeline
 
 on:
   push:
-    branches: ["main"]
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build-test-deploy:
-    runs-on: self-hosted   # your self-hosted Windows runner
-    env:
-      MINIKUBE_REGISTRY: localhost:5000
+    runs-on: self-hosted   # important - runs locally
 
     steps:
-      # 1️. Checkout code
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2️.Set up Node.js
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: 18
 
-      # 3️. Build, Test, Deploy
-      - name: Build, Test, Deploy Microservices
-        shell: pwsh
+      # --- RUN TESTS FOR ALL MICROSERVICES ---
+      - name: Install dependencies & run tests
         run: |
-          $services = @("appointment", "patient", "notification")
+          cd appointment && npm install && npm test && cd ..
+          cd doctor && npm install && npm test && cd ..
+          cd patient && npm install && npm test && cd ..
+          cd notification && npm install && npm test
 
-          foreach ($service in $services) {
-              Write-Host "======================================"
-              Write-Host "Processing $service service..."
-              Write-Host "======================================"
+      # --- BUILD DOCKER IMAGES ---
+      - name: Log in to GHCR
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-              # Go to service folder
-              Set-Location $service
-
-              # Install dependencies
-              Write-Host "Installing dependencies for $service..."
-              npm install
-
-              # Run tests
-              Write-Host "Running tests for $service..."
-              npm test
-
-              # Return to root
-              Set-Location ..
-
-              # Build Docker image
-              Write-Host "Building Docker image for $service..."
-              docker build -t $env:MINIKUBE_REGISTRY/$service-service:latest .\$service
-
-              # Push Docker image
-              Write-Host "Pushing Docker image for $service..."
-              docker push $env:MINIKUBE_REGISTRY/$service-service:latest
-
-              # Update Kubernetes deployment manifest with new image
-              Write-Host "Updating Kubernetes manifest for $service..."
-              (Get-Content "k8s\$service\deployment.yaml") -replace 'image:.*', "image: $env:MINIKUBE_REGISTRY/$service-service:latest" | Set-Content "k8s\$service\deployment.yaml"
-
-              # Deploy to Kubernetes
-              Write-Host "Deploying $service to Kubernetes..."
-              kubectl apply -f "k8s\$service\deployment.yaml"
-              kubectl apply -f "k8s\$service\service.yaml"
-
-              # Wait for rollout
-              Write-Host "Waiting for $service deployment rollout..."
-              kubectl rollout status deployment/$service-deployment --timeout=120s
-          }
-
-      # 4️. Verify deployments (optional)
-      - name: Verify deployments
-        shell: pwsh
+      - name: Build & push images
         run: |
-          Write-Host "Pods in cluster:"
-          kubectl get pods
-          Write-Host "Services in cluster:"
-          kubectl get svc
+          docker build -t ghcr.io/${{ github.repository }}/appointment:latest appointment
+          docker build -t ghcr.io/${{ github.repository }}/doctor:latest doctor
+          docker build -t ghcr.io/${{ github.repository }}/patient:latest patient
+          docker build -t ghcr.io/${{ github.repository }}/notification:latest notification
+
+          docker push ghcr.io/${{ github.repository }}/appointment:latest
+          docker push ghcr.io/${{ github.repository }}/doctor:latest
+          docker push ghcr.io/${{ github.repository }}/patient:latest
+          docker push ghcr.io/${{ github.repository }}/notification:latest
+
+      # --- DEPLOY TO LOCAL KUBERNETES CLUSTER ---
+      - name: Apply Kubernetes manifests
+        run: |
+          kubectl apply -R -f k8s/ -n telemed
+
+      - name: Restart deployments so they pull new images
+        run: |
+          kubectl rollout restart deployment appointment-deployment -n telemed
+          kubectl rollout restart deployment doctor-deployment -n telemed
+          kubectl rollout restart deployment patient-deployment -n telemed
+          kubectl rollout restart deployment notification-deployment -n telemed
