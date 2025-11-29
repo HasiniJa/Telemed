@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: notification
-        image: ghcr.io/HasiniJa/Telemed/notification:latest
+        image: hasinij4567/notification-service:1.0
         imagePullPolicy: Always
       
         ports:

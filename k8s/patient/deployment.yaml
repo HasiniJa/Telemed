@@ -14,9 +14,8 @@ spec:
     spec:
       containers:
       - name: patient
-        image: ghcr.io/HasiniJa/Telemed/patient:latest
+        image: hasinij4567/patient-service:1.0
         imagePullPolicy: Always
-        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 4000
         env:
@@ -35,10 +34,3 @@ spec:
             secretKeyRef:
               name: patient-secret
               key: JWT_SECRET
-        resources:
-          requests:
-            cpu: "100m"
-            memory: "128Mi"
-          limits:
-            cpu: "200m"
-            memory: "256Mi"
