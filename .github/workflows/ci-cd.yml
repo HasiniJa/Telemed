@@ -1,6 +1,5 @@
 name: CI/CD Pipeline
 
-# Trigger on push or pull request to main branch
 on:
   push:
     branches: [ "main" ]
@@ -9,7 +8,7 @@ on:
 
 jobs:
   build-test-deploy:
-    runs-on: self-hosted   # Use your self-hosted runner
+    runs-on: self-hosted   # Your Windows self-hosted runner
 
     env:
       MONGO_URI: ${{ secrets.MONGO_URI }}
@@ -27,17 +26,32 @@ jobs:
         with:
           node-version: 18
 
-      # Step 3: Install dependencies & run Jest tests for all services
+      # Step 3: Install dependencies & run tests for all services (PowerShell)
       - name: Install dependencies & run tests
+        shell: pwsh
         run: |
-          set -e
-          cd appoinment_service && npm install && npm run test && cd ..
-          cd doctor_service && npm install && npm run test && cd ..
-          cd patient_service && npm install && npm run test && cd ..
-          cd notification_service && npm install && npm run test
+          cd appoinment_service
+          npm install
+          npm run test
+          cd ..
+          
+          cd doctor_service
+          npm install
+          npm run test
+          cd ..
+          
+          cd patient_service
+          npm install
+          npm run test
+          cd ..
+          
+          cd notification_service
+          npm install
+          npm run test
 
       # Step 4: Login to Docker Hub
       - name: Log in to Docker Hub
+        shell: pwsh
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
@@ -45,6 +59,7 @@ jobs:
 
       # Step 5: Build & push Docker images
       - name: Build & push Docker images
+        shell: pwsh
         run: |
           docker build -t hasinij4567/appointment-service:1.0 ./appointment_service
           docker build -t hasinij4567/doctor-service:1.0 ./doctor_service
@@ -56,18 +71,21 @@ jobs:
           docker push hasinij4567/patient-service:1.0
           docker push hasinij4567/notification-service:1.0
 
-      # Step 6: Create namespace if not exists
+      # Step 6: Ensure Kubernetes namespace exists
       - name: Ensure Kubernetes namespace exists
+        shell: pwsh
         run: |
           kubectl create namespace telemed --dry-run=client -o yaml | kubectl apply -f -
 
       # Step 7: Apply Kubernetes manifests
       - name: Apply Kubernetes manifests
+        shell: pwsh
         run: |
           kubectl apply -R -f k8s/ -n telemed
 
-      # Step 8: Restart deployments to pull new images
+      # Step 8: Restart deployments
       - name: Restart deployments
+        shell: pwsh
         run: |
           kubectl rollout restart deployment appointment-deployment -n telemed
           kubectl rollout restart deployment doctor-deployment -n telemed
