@@ -1,0 +1,4207 @@
+[2025-12-03 16:17:54Z INFO HostContext] No proxy settings were found based on environmental variables (http_proxy/https_proxy/HTTP_PROXY/HTTPS_PROXY)
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known config file 'Credentials': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\.credentials'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known config file 'Runner': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\.runner'
+[2025-12-03 16:17:54Z INFO Worker] Version: 2.329.0
+[2025-12-03 16:17:54Z INFO Worker] Commit: c76c59996c8fa32e989164a5a695efb12608ae5a
+[2025-12-03 16:17:54Z INFO Worker] Culture: en-US
+[2025-12-03 16:17:54Z INFO Worker] UI Culture: en-US
+[2025-12-03 16:17:54Z INFO Worker] Waiting to receive the job message from the channel.
+[2025-12-03 16:17:54Z INFO ProcessChannel] Receiving message of length 21667, with hash '68cf8fc8bc8a9648e3da883f00133bed0458eb0ba33021c2b71b4e9cea311cbf'
+[2025-12-03 16:17:54Z INFO Worker] Message received.
+[2025-12-03 16:17:54Z INFO Worker] Job message:
+ {
+  "fileTable": [
+    ".github/workflows/ci-cd.yml"
+  ],
+  "mask": [
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    },
+    {
+      "type": "regex",
+      "value": "***"
+    }
+  ],
+  "steps": [
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "actions/checkout",
+        "ref": "v3",
+        "repositoryType": "GitHub"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 16,
+        "col": 15,
+        "lit": "Checkout repository"
+      },
+      "contextName": "__actions_checkout",
+      "condition": "success()",
+      "id": "f1cb79ab-d995-4106-aca1-2fb1c4f47e3a",
+      "name": "__actions_checkout"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "actions/setup-node",
+        "ref": "v3",
+        "repositoryType": "GitHub"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 20,
+        "col": 15,
+        "lit": "Set up Node.js"
+      },
+      "contextName": "__actions_setup-node",
+      "inputs": {
+        "type": 2,
+        "file": 1,
+        "line": 23,
+        "col": 11,
+        "map": [
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 23,
+              "col": 11,
+              "lit": "node-version"
+            },
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 23,
+              "col": 25,
+              "lit": "18"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "fe6dd2ab-b7b9-4a0a-bfed-43722944c7eb",
+      "name": "__actions_setup-node"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 26,
+        "col": 15,
+        "lit": "Install dependencies & run tests"
+      },
+      "contextName": "__run",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 27,
+              "col": 14,
+              "lit": "cd appointment && npm install && npm test && cd ..\ncd doctor && npm install && npm test && cd ..\ncd patient && npm install && npm test && cd ..\ncd notification && npm install && npm test\n"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "f95745fa-7668-48dc-8523-402df2025add",
+      "name": "__run"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "repository",
+        "name": "docker/login-action",
+        "ref": "v2",
+        "repositoryType": "GitHub"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 34,
+        "col": 15,
+        "lit": "Log in to Docker Hub"
+      },
+      "contextName": "__docker_login-action",
+      "inputs": {
+        "type": 2,
+        "file": 1,
+        "line": 37,
+        "col": 11,
+        "map": [
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 37,
+              "col": 11,
+              "lit": "username"
+            },
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 37,
+              "col": 21,
+              "expr": "secrets.DOCKER_USERNAME"
+            }
+          },
+          {
+            "key": {
+              "type": 0,
+              "file": 1,
+              "line": 38,
+              "col": 11,
+              "lit": "password"
+            },
+            "value": {
+              "type": 3,
+              "file": 1,
+              "line": 38,
+              "col": 21,
+              "expr": "secrets.DOCKER_PASSWORD"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "50213649-6a50-460a-9584-f07fa6978669",
+      "name": "__docker_login-action"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 41,
+        "col": 15,
+        "lit": "Build & push Docker images"
+      },
+      "contextName": "__run_2",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 42,
+              "col": 14,
+              "lit": "docker build -t hasinij4567/appointment-service:1.0 appointment\ndocker build -t hasinij4567/doctor-service:1.0 doctor\ndocker build -t hasinij4567/patient-service:1.0 patient\ndocker build -t hasinij4567/notification-service:1.0 notification\n\ndocker push hasinij4567/appointment-service:1.0\ndocker push hasinij4567/doctor-service:1.0\ndocker push hasinij4567/patient-service:1.0\ndocker push hasinij4567/notification-service:1.0\n"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "341e74d5-68a8-4c76-ac00-3ebf155ea26b",
+      "name": "__run_2"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 54,
+        "col": 15,
+        "lit": "Apply Kubernetes manifests"
+      },
+      "contextName": "__run_3",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 55,
+              "col": 14,
+              "lit": "kubectl apply -R -f k8s/ -n telemed\n"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "feca79fc-d2a2-4184-aa8a-19750ea3dd12",
+      "name": "__run_3"
+    },
+    {
+      "type": "action",
+      "reference": {
+        "type": "script"
+      },
+      "displayNameToken": {
+        "type": 0,
+        "file": 1,
+        "line": 59,
+        "col": 15,
+        "lit": "Restart deployments"
+      },
+      "contextName": "__run_4",
+      "inputs": {
+        "type": 2,
+        "map": [
+          {
+            "key": "script",
+            "value": {
+              "type": 0,
+              "file": 1,
+              "line": 60,
+              "col": 14,
+              "lit": "kubectl rollout restart deployment appointment-deployment -n telemed\nkubectl rollout restart deployment doctor-deployment -n telemed\nkubectl rollout restart deployment patient-deployment -n telemed\nkubectl rollout restart deployment notification-deployment -n telemed\n"
+            }
+          }
+        ]
+      },
+      "condition": "success()",
+      "id": "2d9ca33c-66ba-4c37-a494-cff28c7bd1da",
+      "name": "__run_4"
+    }
+  ],
+  "variables": {
+    "Actions.EnableHttpRedirects": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode12Action": {
+      "value": "true"
+    },
+    "DistributedTask.AddWarningToNode16Action": {
+      "value": "true"
+    },
+    "DistributedTask.AllowRunnerContainerHooks": {
+      "value": "true"
+    },
+    "DistributedTask.DeprecateStepOutputCommands": {
+      "value": "true"
+    },
+    "DistributedTask.DetailUntarFailure": {
+      "value": "true"
+    },
+    "DistributedTask.EnableCompositeActions": {
+      "value": "true"
+    },
+    "DistributedTask.EnableJobServerQueueTelemetry": {
+      "value": "true"
+    },
+    "DistributedTask.EnhancedAnnotations": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode16": {
+      "value": "true"
+    },
+    "DistributedTask.ForceGithubJavascriptActionsToNode20": {
+      "value": "true"
+    },
+    "DistributedTask.LogTemplateErrorsAsDebugMessages": {
+      "value": "true"
+    },
+    "DistributedTask.MarkJobAsFailedOnWorkerCrash": {
+      "value": "true"
+    },
+    "DistributedTask.NewActionMetadata": {
+      "value": "true"
+    },
+    "DistributedTask.UploadStepSummary": {
+      "value": "true"
+    },
+    "DistributedTask.UseActionArchiveCache": {
+      "value": "true"
+    },
+    "DistributedTask.UseWhich2": {
+      "value": "true"
+    },
+    "RunService.FixEmbeddedIssues": {
+      "value": "true"
+    },
+    "actions_add_check_run_id_to_job_context": {
+      "value": "true"
+    },
+    "actions_container_action_runner_temp": {
+      "value": "true"
+    },
+    "actions_display_helpful_actions_download_errors": {
+      "value": "true"
+    },
+    "actions_skip_retry_complete_job_upon_known_errors": {
+      "value": "true"
+    },
+    "actions_uses_cache_service_v2": {
+      "value": "true"
+    },
+    "github_token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.from_run_service": {
+      "value": "true"
+    },
+    "system.github.job": {
+      "value": "build-test-deploy"
+    },
+    "system.github.launch_endpoint": {
+      "value": "https://launch.actions.githubusercontent.com"
+    },
+    "system.github.results_endpoint": {
+      "value": "https://results-receiver.actions.githubusercontent.com/"
+    },
+    "system.github.results_upload_with_sdk": {
+      "value": "true"
+    },
+    "system.github.token": {
+      "value": "***",
+      "isSecret": true
+    },
+    "system.github.token.permissions": {
+      "value": "{\"Contents\":\"read\",\"Metadata\":\"read\",\"Packages\":\"read\"}"
+    },
+    "system.orchestrationId": {
+      "value": "863e355e-0c54-4a81-b428-594982a87ab8.build-test-deploy.__default"
+    },
+    "system.phaseDisplayName": {
+      "value": "build-test-deploy"
+    },
+    "system.runner.lowdiskspacethreshold": {
+      "value": "100"
+    },
+    "system.runnerEnvironment": {
+      "value": "self-hosted"
+    },
+    "system.runnerGroupName": {
+      "value": "Default"
+    }
+  },
+  "messageType": "RunnerJobRequest",
+  "plan": {
+    "scopeIdentifier": "00000000-0000-0000-0000-000000000000",
+    "planType": "actions",
+    "version": 0,
+    "planId": "863e355e-0c54-4a81-b428-594982a87ab8",
+    "planGroup": null,
+    "artifactUri": null,
+    "artifactLocation": null,
+    "definition": null,
+    "owner": null
+  },
+  "timeline": {
+    "id": "863e355e-0c54-4a81-b428-594982a87ab8",
+    "changeId": 0,
+    "location": null
+  },
+  "jobId": "f95a7b45-b634-5ec4-9aa6-0136dbb48134",
+  "jobDisplayName": "build-test-deploy",
+  "jobName": "__default",
+  "requestId": 0,
+  "lockedUntil": "0001-01-01T00:00:00",
+  "resources": {
+    "endpoints": [
+      {
+        "data": {
+          "ServerId": "",
+          "ServerName": "",
+          "CacheServerUrl": "https://artifactcache.actions.githubusercontent.com/IcgAscaefdPjEWOPCNsajrqOlZJsKZhmtAVpLzwWkLoXj0b3PB/",
+          "FeedStreamUrl": "wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock",
+          "ResultsServiceUrl": "https://results-receiver.actions.githubusercontent.com/",
+          "PipelinesServiceUrl": "https://pipelinesghubeus7.actions.githubusercontent.com/IcgAscaefdPjEWOPCNsajrqOlZJsKZhmtAVpLzwWkLoXj0b3PB/",
+          "GenerateIdTokenUrl": ""
+        },
+        "name": "SystemVssConnection",
+        "url": "https://run-actions-2-azure-eastus.actions.githubusercontent.com/48/",
+        "authorization": {
+          "parameters": {
+            "AccessToken": "***"
+          },
+          "scheme": "OAuth"
+        },
+        "isShared": false,
+        "isReady": true
+      }
+    ]
+  },
+  "contextData": {
+    "github": {
+      "t": 2,
+      "d": [
+        {
+          "k": "ref",
+          "v": "refs/heads/main"
+        },
+        {
+          "k": "sha",
+          "v": "61ee13c5f9613b423b5c8a4bd6fc4329a8a29599"
+        },
+        {
+          "k": "repository",
+          "v": "HasiniJa/Telemed"
+        },
+        {
+          "k": "repository_owner",
+          "v": "HasiniJa"
+        },
+        {
+          "k": "repository_owner_id",
+          "v": "169177724"
+        },
+        {
+          "k": "repositoryUrl",
+          "v": "git://github.com/HasiniJa/Telemed.git"
+        },
+        {
+          "k": "run_id",
+          "v": "19900795853"
+        },
+        {
+          "k": "run_number",
+          "v": "11"
+        },
+        {
+          "k": "retention_days",
+          "v": "90"
+        },
+        {
+          "k": "run_attempt",
+          "v": "1"
+        },
+        {
+          "k": "artifact_cache_size_limit",
+          "v": "10"
+        },
+        {
+          "k": "repository_visibility",
+          "v": "public"
+        },
+        {
+          "k": "actor_id",
+          "v": "169177724"
+        },
+        {
+          "k": "actor",
+          "v": "HasiniJa"
+        },
+        {
+          "k": "workflow",
+          "v": "CI/CD Pipeline"
+        },
+        {
+          "k": "head_ref",
+          "v": ""
+        },
+        {
+          "k": "base_ref",
+          "v": ""
+        },
+        {
+          "k": "event_name",
+          "v": "push"
+        },
+        {
+          "k": "server_url",
+          "v": "https://github.com"
+        },
+        {
+          "k": "api_url",
+          "v": "https://api.github.com"
+        },
+        {
+          "k": "graphql_url",
+          "v": "https://api.github.com/graphql"
+        },
+        {
+          "k": "ref_name",
+          "v": "main"
+        },
+        {
+          "k": "ref_protected",
+          "v": false
+        },
+        {
+          "k": "ref_type",
+          "v": "branch"
+        },
+        {
+          "k": "secret_source",
+          "v": "Actions"
+        },
+        {
+          "k": "event",
+          "v": {
+            "t": 2,
+            "d": [
+              {
+                "k": "after",
+                "v": "61ee13c5f9613b423b5c8a4bd6fc4329a8a29599"
+              },
+              {
+                "k": "base_ref",
+                "v": null
+              },
+              {
+                "k": "before",
+                "v": "2a007a1b34c8ca78f592905f78135adf5a9f4054"
+              },
+              {
+                "k": "commits",
+                "v": {
+                  "t": 1,
+                  "a": [
+                    {
+                      "t": 2,
+                      "d": [
+                        {
+                          "k": "author",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "hasinijayasekara2012@gmail.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "Hasini Jayasekara"
+                              },
+                              {
+                                "k": "username",
+                                "v": "HasiniJa"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "committer",
+                          "v": {
+                            "t": 2,
+                            "d": [
+                              {
+                                "k": "email",
+                                "v": "hasinijayasekara2012@gmail.com"
+                              },
+                              {
+                                "k": "name",
+                                "v": "Hasini Jayasekara"
+                              },
+                              {
+                                "k": "username",
+                                "v": "HasiniJa"
+                              }
+                            ]
+                          }
+                        },
+                        {
+                          "k": "distinct",
+                          "v": true
+                        },
+                        {
+                          "k": "id",
+                          "v": "61ee13c5f9613b423b5c8a4bd6fc4329a8a29599"
+                        },
+                        {
+                          "k": "message",
+                          "v": "Trigger CI/CD pipeline"
+                        },
+                        {
+                          "k": "timestamp",
+                          "v": "2025-12-03T11:17:44-05:00"
+                        },
+                        {
+                          "k": "tree_id",
+                          "v": "91ba4c66b103015dd4b2a899fa995257355d966b"
+                        },
+                        {
+                          "k": "url",
+                          "v": "https://github.com/HasiniJa/Telemed/commit/61ee13c5f9613b423b5c8a4bd6fc4329a8a29599"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "compare",
+                "v": "https://github.com/HasiniJa/Telemed/compare/2a007a1b34c8...61ee13c5f961"
+              },
+              {
+                "k": "created",
+                "v": false
+              },
+              {
+                "k": "deleted",
+                "v": false
+              },
+              {
+                "k": "forced",
+                "v": false
+              },
+              {
+                "k": "head_commit",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "author",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "hasinijayasekara2012@gmail.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "Hasini Jayasekara"
+                          },
+                          {
+                            "k": "username",
+                            "v": "HasiniJa"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "committer",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "email",
+                            "v": "hasinijayasekara2012@gmail.com"
+                          },
+                          {
+                            "k": "name",
+                            "v": "Hasini Jayasekara"
+                          },
+                          {
+                            "k": "username",
+                            "v": "HasiniJa"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "distinct",
+                      "v": true
+                    },
+                    {
+                      "k": "id",
+                      "v": "61ee13c5f9613b423b5c8a4bd6fc4329a8a29599"
+                    },
+                    {
+                      "k": "message",
+                      "v": "Trigger CI/CD pipeline"
+                    },
+                    {
+                      "k": "timestamp",
+                      "v": "2025-12-03T11:17:44-05:00"
+                    },
+                    {
+                      "k": "tree_id",
+                      "v": "91ba4c66b103015dd4b2a899fa995257355d966b"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://github.com/HasiniJa/Telemed/commit/61ee13c5f9613b423b5c8a4bd6fc4329a8a29599"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "pusher",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "email",
+                      "v": "hasinijayasekara2012@gmail.com"
+                    },
+                    {
+                      "k": "name",
+                      "v": "HasiniJa"
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "ref",
+                "v": "refs/heads/main"
+              },
+              {
+                "k": "repository",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "allow_forking",
+                      "v": true
+                    },
+                    {
+                      "k": "archive_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/{archive_format}{/ref}"
+                    },
+                    {
+                      "k": "archived",
+                      "v": false
+                    },
+                    {
+                      "k": "assignees_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/assignees{/user}"
+                    },
+                    {
+                      "k": "blobs_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/git/blobs{/sha}"
+                    },
+                    {
+                      "k": "branches_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/branches{/branch}"
+                    },
+                    {
+                      "k": "clone_url",
+                      "v": "https://github.com/HasiniJa/Telemed.git"
+                    },
+                    {
+                      "k": "collaborators_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/collaborators{/collaborator}"
+                    },
+                    {
+                      "k": "comments_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/comments{/number}"
+                    },
+                    {
+                      "k": "commits_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/commits{/sha}"
+                    },
+                    {
+                      "k": "compare_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/compare/{base}...{head}"
+                    },
+                    {
+                      "k": "contents_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/contents/{+path}"
+                    },
+                    {
+                      "k": "contributors_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/contributors"
+                    },
+                    {
+                      "k": "created_at",
+                      "v": 1763820532.0
+                    },
+                    {
+                      "k": "default_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "deployments_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/deployments"
+                    },
+                    {
+                      "k": "description",
+                      "v": null
+                    },
+                    {
+                      "k": "disabled",
+                      "v": false
+                    },
+                    {
+                      "k": "downloads_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/downloads"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/events"
+                    },
+                    {
+                      "k": "fork",
+                      "v": false
+                    },
+                    {
+                      "k": "forks",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "forks_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/forks"
+                    },
+                    {
+                      "k": "full_name",
+                      "v": "HasiniJa/Telemed"
+                    },
+                    {
+                      "k": "git_commits_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/git/commits{/sha}"
+                    },
+                    {
+                      "k": "git_refs_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/git/refs{/sha}"
+                    },
+                    {
+                      "k": "git_tags_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/git/tags{/sha}"
+                    },
+                    {
+                      "k": "git_url",
+                      "v": "git://github.com/HasiniJa/Telemed.git"
+                    },
+                    {
+                      "k": "has_discussions",
+                      "v": false
+                    },
+                    {
+                      "k": "has_downloads",
+                      "v": true
+                    },
+                    {
+                      "k": "has_issues",
+                      "v": true
+                    },
+                    {
+                      "k": "has_pages",
+                      "v": false
+                    },
+                    {
+                      "k": "has_projects",
+                      "v": true
+                    },
+                    {
+                      "k": "has_wiki",
+                      "v": true
+                    },
+                    {
+                      "k": "homepage",
+                      "v": null
+                    },
+                    {
+                      "k": "hooks_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/hooks"
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/HasiniJa/Telemed"
+                    },
+                    {
+                      "k": "id",
+                      "v": 1101933572.0
+                    },
+                    {
+                      "k": "is_template",
+                      "v": false
+                    },
+                    {
+                      "k": "issue_comment_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/issues/comments{/number}"
+                    },
+                    {
+                      "k": "issue_events_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/issues/events{/number}"
+                    },
+                    {
+                      "k": "issues_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/issues{/number}"
+                    },
+                    {
+                      "k": "keys_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/keys{/key_id}"
+                    },
+                    {
+                      "k": "labels_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/labels{/name}"
+                    },
+                    {
+                      "k": "language",
+                      "v": "TypeScript"
+                    },
+                    {
+                      "k": "languages_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/languages"
+                    },
+                    {
+                      "k": "license",
+                      "v": null
+                    },
+                    {
+                      "k": "master_branch",
+                      "v": "main"
+                    },
+                    {
+                      "k": "merges_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/merges"
+                    },
+                    {
+                      "k": "milestones_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/milestones{/number}"
+                    },
+                    {
+                      "k": "mirror_url",
+                      "v": null
+                    },
+                    {
+                      "k": "name",
+                      "v": "Telemed"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "R_kgDOQa4sBA"
+                    },
+                    {
+                      "k": "notifications_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/notifications{?since,all,participating}"
+                    },
+                    {
+                      "k": "open_issues",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "open_issues_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "owner",
+                      "v": {
+                        "t": 2,
+                        "d": [
+                          {
+                            "k": "avatar_url",
+                            "v": "https://avatars.githubusercontent.com/u/169177724?v=4"
+                          },
+                          {
+                            "k": "email",
+                            "v": "hasinijayasekara2012@gmail.com"
+                          },
+                          {
+                            "k": "events_url",
+                            "v": "https://api.github.com/users/HasiniJa/events{/privacy}"
+                          },
+                          {
+                            "k": "followers_url",
+                            "v": "https://api.github.com/users/HasiniJa/followers"
+                          },
+                          {
+                            "k": "following_url",
+                            "v": "https://api.github.com/users/HasiniJa/following{/other_user}"
+                          },
+                          {
+                            "k": "gists_url",
+                            "v": "https://api.github.com/users/HasiniJa/gists{/gist_id}"
+                          },
+                          {
+                            "k": "gravatar_id",
+                            "v": ""
+                          },
+                          {
+                            "k": "html_url",
+                            "v": "https://github.com/HasiniJa"
+                          },
+                          {
+                            "k": "id",
+                            "v": 169177724.0
+                          },
+                          {
+                            "k": "login",
+                            "v": "HasiniJa"
+                          },
+                          {
+                            "k": "name",
+                            "v": "HasiniJa"
+                          },
+                          {
+                            "k": "node_id",
+                            "v": "U_kgDOChVyfA"
+                          },
+                          {
+                            "k": "organizations_url",
+                            "v": "https://api.github.com/users/HasiniJa/orgs"
+                          },
+                          {
+                            "k": "received_events_url",
+                            "v": "https://api.github.com/users/HasiniJa/received_events"
+                          },
+                          {
+                            "k": "repos_url",
+                            "v": "https://api.github.com/users/HasiniJa/repos"
+                          },
+                          {
+                            "k": "site_admin",
+                            "v": false
+                          },
+                          {
+                            "k": "starred_url",
+                            "v": "https://api.github.com/users/HasiniJa/starred{/owner}{/repo}"
+                          },
+                          {
+                            "k": "subscriptions_url",
+                            "v": "https://api.github.com/users/HasiniJa/subscriptions"
+                          },
+                          {
+                            "k": "type",
+                            "v": "User"
+                          },
+                          {
+                            "k": "url",
+                            "v": "https://api.github.com/users/HasiniJa"
+                          },
+                          {
+                            "k": "user_view_type",
+                            "v": "public"
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "k": "private",
+                      "v": false
+                    },
+                    {
+                      "k": "pulls_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/pulls{/number}"
+                    },
+                    {
+                      "k": "pushed_at",
+                      "v": 1764778667.0
+                    },
+                    {
+                      "k": "releases_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/releases{/id}"
+                    },
+                    {
+                      "k": "size",
+                      "v": 245311.0
+                    },
+                    {
+                      "k": "ssh_url",
+                      "v": "git@github.com:HasiniJa/Telemed.git"
+                    },
+                    {
+                      "k": "stargazers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "stargazers_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/stargazers"
+                    },
+                    {
+                      "k": "statuses_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/statuses/{sha}"
+                    },
+                    {
+                      "k": "subscribers_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/subscribers"
+                    },
+                    {
+                      "k": "subscription_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/subscription"
+                    },
+                    {
+                      "k": "svn_url",
+                      "v": "https://github.com/HasiniJa/Telemed"
+                    },
+                    {
+                      "k": "tags_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/tags"
+                    },
+                    {
+                      "k": "teams_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/teams"
+                    },
+                    {
+                      "k": "topics",
+                      "v": {
+                        "t": 1
+                      }
+                    },
+                    {
+                      "k": "trees_url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed/git/trees{/sha}"
+                    },
+                    {
+                      "k": "updated_at",
+                      "v": "2025-11-29T23:55:17Z"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/repos/HasiniJa/Telemed"
+                    },
+                    {
+                      "k": "visibility",
+                      "v": "public"
+                    },
+                    {
+                      "k": "watchers",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "watchers_count",
+                      "v": 0.0
+                    },
+                    {
+                      "k": "web_commit_signoff_required",
+                      "v": false
+                    }
+                  ]
+                }
+              },
+              {
+                "k": "sender",
+                "v": {
+                  "t": 2,
+                  "d": [
+                    {
+                      "k": "avatar_url",
+                      "v": "https://avatars.githubusercontent.com/u/169177724?v=4"
+                    },
+                    {
+                      "k": "events_url",
+                      "v": "https://api.github.com/users/HasiniJa/events{/privacy}"
+                    },
+                    {
+                      "k": "followers_url",
+                      "v": "https://api.github.com/users/HasiniJa/followers"
+                    },
+                    {
+                      "k": "following_url",
+                      "v": "https://api.github.com/users/HasiniJa/following{/other_user}"
+                    },
+                    {
+                      "k": "gists_url",
+                      "v": "https://api.github.com/users/HasiniJa/gists{/gist_id}"
+                    },
+                    {
+                      "k": "gravatar_id",
+                      "v": ""
+                    },
+                    {
+                      "k": "html_url",
+                      "v": "https://github.com/HasiniJa"
+                    },
+                    {
+                      "k": "id",
+                      "v": 169177724.0
+                    },
+                    {
+                      "k": "login",
+                      "v": "HasiniJa"
+                    },
+                    {
+                      "k": "node_id",
+                      "v": "U_kgDOChVyfA"
+                    },
+                    {
+                      "k": "organizations_url",
+                      "v": "https://api.github.com/users/HasiniJa/orgs"
+                    },
+                    {
+                      "k": "received_events_url",
+                      "v": "https://api.github.com/users/HasiniJa/received_events"
+                    },
+                    {
+                      "k": "repos_url",
+                      "v": "https://api.github.com/users/HasiniJa/repos"
+                    },
+                    {
+                      "k": "site_admin",
+                      "v": false
+                    },
+                    {
+                      "k": "starred_url",
+                      "v": "https://api.github.com/users/HasiniJa/starred{/owner}{/repo}"
+                    },
+                    {
+                      "k": "subscriptions_url",
+                      "v": "https://api.github.com/users/HasiniJa/subscriptions"
+                    },
+                    {
+                      "k": "type",
+                      "v": "User"
+                    },
+                    {
+                      "k": "url",
+                      "v": "https://api.github.com/users/HasiniJa"
+                    },
+                    {
+                      "k": "user_view_type",
+                      "v": "public"
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        {
+          "k": "workflow_ref",
+          "v": "HasiniJa/Telemed/.github/workflows/ci-cd.yml@refs/heads/main"
+        },
+        {
+          "k": "workflow_sha",
+          "v": "61ee13c5f9613b423b5c8a4bd6fc4329a8a29599"
+        },
+        {
+          "k": "repository_id",
+          "v": "1101933572"
+        },
+        {
+          "k": "triggering_actor",
+          "v": "HasiniJa"
+        }
+      ]
+    },
+    "inputs": {
+      "t": 2
+    },
+    "job": {
+      "t": 2,
+      "d": [
+        {
+          "k": "check_run_id",
+          "v": 57043779051.0
+        }
+      ]
+    },
+    "matrix": null,
+    "needs": {
+      "t": 2
+    },
+    "strategy": {
+      "t": 2,
+      "d": [
+        {
+          "k": "fail-fast",
+          "v": true
+        },
+        {
+          "k": "job-index",
+          "v": 0.0
+        },
+        {
+          "k": "job-total",
+          "v": 1.0
+        },
+        {
+          "k": "max-parallel",
+          "v": 1.0
+        }
+      ]
+    },
+    "vars": {
+      "t": 2
+    }
+  },
+  "billingOwnerId": "U_kgDOChVyfA"
+}
+[2025-12-03 16:17:54Z INFO JobRunner] Job ID f95a7b45-b634-5ec4-9aa6-0136dbb48134
+[2025-12-03 16:17:54Z INFO ConfigurationStore] currentAssemblyLocation: D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin\Runner.Worker.dll
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO ConfigurationStore] binPath: D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO ConfigurationStore] RootFolder: D:\4thSemester\SOA\Final Project\Telemed\actions-runner
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known config file 'Runner': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\.runner'
+[2025-12-03 16:17:54Z INFO ConfigurationStore] ConfigFilePath: D:\4thSemester\SOA\Final Project\Telemed\actions-runner\.runner
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known config file 'MigratedRunner': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\.runner_migrated'
+[2025-12-03 16:17:54Z INFO ConfigurationStore] MigratedConfigFilePath: D:\4thSemester\SOA\Final Project\Telemed\actions-runner\.runner_migrated
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known config file 'Credentials': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\.credentials'
+[2025-12-03 16:17:54Z INFO ConfigurationStore] CredFilePath: D:\4thSemester\SOA\Final Project\Telemed\actions-runner\.credentials
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known config file 'MigratedCredentials': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\.credentials_migrated'
+[2025-12-03 16:17:54Z INFO ConfigurationStore] MigratedCredFilePath: D:\4thSemester\SOA\Final Project\Telemed\actions-runner\.credentials_migrated
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known config file 'Service': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\.service'
+[2025-12-03 16:17:54Z INFO ConfigurationStore] ServiceConfigFilePath: D:\4thSemester\SOA\Final Project\Telemed\actions-runner\.service
+[2025-12-03 16:17:54Z INFO ConfigurationStore] Read setting file: 385 chars
+[2025-12-03 16:17:54Z INFO JobRunner] Initializing launch client
+[2025-12-03 16:17:54Z INFO JobServerQueue] Initializing results client
+[2025-12-03 16:17:54Z INFO ResultServer] Creating websocket client ...wss://results-receiver.actions.githubusercontent.com/_ws/ingest.sock
+[2025-12-03 16:17:54Z INFO ResultServer] Attempting to start websocket client with delay 00:00:00.
+[2025-12-03 16:17:54Z INFO JobServerQueue] Start process web console line queue.
+[2025-12-03 16:17:54Z INFO JobServerQueue] Start process file upload queue.
+[2025-12-03 16:17:54Z INFO JobServerQueue] Start results file upload queue.
+[2025-12-03 16:17:54Z INFO JobServerQueue] Starting results-based upload queue...
+[2025-12-03 16:17:54Z INFO JobServerQueue] Start process timeline update queue.
+[2025-12-03 16:17:54Z INFO ExecutionContext] Initializing Job context
+[2025-12-03 16:17:54Z INFO ExecutionContext] Initialize GitHub context
+[2025-12-03 16:17:54Z INFO ExecutionContext] Initialize Env context
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:54Z INFO JobRunner] Starting the job execution context.
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:54Z INFO JobRunner] Validating directory permissions for: 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Tools': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_tool'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Temp': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp'
+[2025-12-03 16:17:54Z INFO JobRunner] Getting job extension.
+[2025-12-03 16:17:54Z INFO JobRunner] Initialize job. Getting all job steps.
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known config file 'Credentials': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\.credentials'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known config file 'SetupInfo': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\.setup_info'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:54Z INFO PipelineDirectoryManager] Loading tracking config if exists: D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_PipelineMapping\HasiniJa/Telemed\PipelineFolder.json
+[2025-12-03 16:17:54Z INFO PipelineDirectoryManager] Updating job run properties.
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:54Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:55Z INFO JobExtension] Downloading actions
+[2025-12-03 16:17:55Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:55Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:55Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:55Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:55Z INFO ResultServer] Successfully started websocket client.
+[2025-12-03 16:17:55Z INFO Worker] Listening for cancel message from the channel.
+[2025-12-03 16:17:55Z INFO Worker] Waiting for the job to complete or for a cancel message from the channel.
+[2025-12-03 16:17:55Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'bbe8190a-b0a8-4a87-beb8-a00752aa4f3e', success rate: 1/1.
+[2025-12-03 16:17:55Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'bbe8190a-b0a8-4a87-beb8-a00752aa4f3e', success rate: 1/1.
+[2025-12-03 16:17:55Z INFO JobServerQueue] Job timeline record has been updated for the first time.
+[2025-12-03 16:17:55Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:55Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:55Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:55Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:55Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:55Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:55Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:55Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:55Z INFO ActionManager] Save archive 'https://api.github.com/repos/actions/checkout/zipball/f43a0e5ff2bd294095638e18286ca9a3d1956744' into D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions\_temp_90ecd89f-356b-418c-a1fc-75703662d81a\d0142c59-d614-4df7-b7a6-8f6269b75156.zip.
+[2025-12-03 16:17:55Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'bbe8190a-b0a8-4a87-beb8-a00752aa4f3e', success rate: 1/1.
+[2025-12-03 16:17:56Z INFO ActionManager] Request URL: https://api.github.com/repos/actions/checkout/zipball/f43a0e5ff2bd294095638e18286ca9a3d1956744 X-GitHub-Request-Id: D4E6:221170:12867:1681A:693062B4 Http Status: OK
+[2025-12-03 16:17:56Z INFO ActionManager] Finished getting action repository.
+[2025-12-03 16:17:56Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:56Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:56Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:56Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:56Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:56Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:56Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:56Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:56Z INFO ActionManager] Save archive 'https://api.github.com/repos/actions/setup-node/zipball/3235b876344d2a9aa001b8d1453c930bba69e610' into D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions\_temp_5089e85e-00fe-429e-ac25-35489e7f626c\4eb6900e-5aaa-4b65-bcc8-0e20da27cc4d.zip.
+[2025-12-03 16:17:57Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'bbe8190a-b0a8-4a87-beb8-a00752aa4f3e', success rate: 1/1.
+[2025-12-03 16:17:57Z INFO ActionManager] Request URL: https://api.github.com/repos/actions/setup-node/zipball/3235b876344d2a9aa001b8d1453c930bba69e610 X-GitHub-Request-Id: D4E9:1E79E8:3EC3FC:4E0228:693062B5 Http Status: OK
+[2025-12-03 16:17:58Z INFO ActionManager] Finished getting action repository.
+[2025-12-03 16:17:58Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:58Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:58Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:58Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:58Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:58Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:58Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:58Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:58Z INFO ActionManager] Save archive 'https://api.github.com/repos/docker/login-action/zipball/465a07811f14bebb1938fbed4728c6a1ff8901fc' into D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions\_temp_53cc108b-e567-4887-9779-7c8584f33015\3b2b27f6-ed48-4e16-aa82-6ebff599bd07.zip.
+[2025-12-03 16:17:58Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'bbe8190a-b0a8-4a87-beb8-a00752aa4f3e', success rate: 1/1.
+[2025-12-03 16:17:59Z INFO ActionManager] Request URL: https://api.github.com/repos/docker/login-action/zipball/465a07811f14bebb1938fbed4728c6a1ff8901fc X-GitHub-Request-Id: D4EB:280947:3A46BF:49715F:693062B6 Http Status: OK
+[2025-12-03 16:17:59Z INFO ActionManager] Finished getting action repository.
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Load schema file with definitions: [
+  "null",
+  "boolean",
+  "number",
+  "string",
+  "sequence",
+  "mapping",
+  "any",
+  "action-root",
+  "inputs",
+  "input",
+  "outputs",
+  "output-definition",
+  "runs",
+  "container-runs",
+  "container-runs-args",
+  "container-runs-env",
+  "node-runs",
+  "plugin-runs",
+  "composite-runs",
+  "composite-steps",
+  "composite-step",
+  "run-step",
+  "uses-step",
+  "container-runs-context",
+  "output-value",
+  "input-default-context",
+  "non-empty-string",
+  "string-steps-context",
+  "boolean-steps-context",
+  "step-env",
+  "step-if",
+  "step-with"
+]
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 50,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 53,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 56,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 61,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 67,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 68,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 71,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-12-03 16:17:59Z INFO ActionManager] Action node.js file: dist/index.js, no more preparation.
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:59Z INFO ActionManager] Load action that reference repository from 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions\actions\checkout\v3'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 50,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 53,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 56,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 61,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 67,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 68,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 71,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-12-03 16:17:59Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-12-03 16:17:59Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-12-03 16:17:59Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Ignore action property author.
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Setup Node.js environment",
+  "description": "Setup a Node.js environment by adding problem matchers and optionally downloading and adding it to the PATH.",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 5,
+          "col": 3,
+          "lit": "always-auth"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 7,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 8,
+          "col": 3,
+          "lit": "node-version"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 10,
+          "col": 3,
+          "lit": "node-version-file"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 12,
+          "col": 3,
+          "lit": "architecture"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 14,
+          "col": 3,
+          "lit": "check-latest"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 16,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 17,
+          "col": 3,
+          "lit": "registry-url"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 19,
+          "col": 3,
+          "lit": "scope"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 21,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 3,
+          "line": 23,
+          "col": 14,
+          "expr": "github.server_url == 'https://github.com' && github.token || ''"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 24,
+          "col": 3,
+          "lit": "cache"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 26,
+          "col": 3,
+          "lit": "cache-dependency-path"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/setup/index.js",
+    "pre": null,
+    "post": "dist/cache-save/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "success()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-12-03 16:17:59Z INFO ActionManager] Action node.js file: dist/setup/index.js, no more preparation.
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:59Z INFO ActionManager] Load action that reference repository from 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions\actions\setup-node\v3'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Ignore action property author.
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Setup Node.js environment",
+  "description": "Setup a Node.js environment by adding problem matchers and optionally downloading and adding it to the PATH.",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 5,
+          "col": 3,
+          "lit": "always-auth"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 7,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 8,
+          "col": 3,
+          "lit": "node-version"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 10,
+          "col": 3,
+          "lit": "node-version-file"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 12,
+          "col": 3,
+          "lit": "architecture"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 14,
+          "col": 3,
+          "lit": "check-latest"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 16,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 17,
+          "col": 3,
+          "lit": "registry-url"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 19,
+          "col": 3,
+          "lit": "scope"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 21,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 3,
+          "line": 23,
+          "col": 14,
+          "expr": "github.server_url == 'https://github.com' && github.token || ''"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 24,
+          "col": 3,
+          "lit": "cache"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 26,
+          "col": 3,
+          "lit": "cache-dependency-path"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/setup/index.js",
+    "pre": null,
+    "post": "dist/cache-save/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "success()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-12-03 16:17:59Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-12-03 16:17:59Z INFO ActionManager] Action node.js file: dist/setup/index.js.
+[2025-12-03 16:17:59Z INFO ActionManager] Action post node.js file: dist/cache-save/index.js.
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Ignore action property author.
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Ignore action property branding.
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Docker Login",
+  "description": "GitHub Action to login against a Docker registry",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 10,
+          "col": 3,
+          "lit": "registry"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 13,
+          "col": 3,
+          "lit": "username"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 16,
+          "col": 3,
+          "lit": "password"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 19,
+          "col": 3,
+          "lit": "ecr"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 21,
+          "col": 14,
+          "lit": "auto"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 23,
+          "col": 3,
+          "lit": "logout"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 25,
+          "col": 14,
+          "lit": "true"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-12-03 16:17:59Z INFO ActionManager] Action node.js file: dist/index.js, no more preparation.
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:59Z INFO ActionManager] Load action that reference repository from 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions\docker\login-action\v2'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Ignore action property author.
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Ignore action property branding.
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Docker Login",
+  "description": "GitHub Action to login against a Docker registry",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 10,
+          "col": 3,
+          "lit": "registry"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 13,
+          "col": 3,
+          "lit": "username"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 16,
+          "col": 3,
+          "lit": "password"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 19,
+          "col": 3,
+          "lit": "ecr"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 21,
+          "col": 14,
+          "lit": "auto"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 4,
+          "line": 23,
+          "col": 3,
+          "lit": "logout"
+        },
+        "value": {
+          "type": 0,
+          "file": 4,
+          "line": 25,
+          "col": 14,
+          "lit": "true"
+        }
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-12-03 16:17:59Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-12-03 16:17:59Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-12-03 16:17:59Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2025-12-03 16:17:59Z INFO JobExtension] Adding .
+[2025-12-03 16:17:59Z INFO JobExtension] Adding .
+[2025-12-03 16:17:59Z INFO JobExtension] Adding .
+[2025-12-03 16:17:59Z INFO JobExtension] Adding .
+[2025-12-03 16:17:59Z INFO JobExtension] Adding .
+[2025-12-03 16:17:59Z INFO JobExtension] Adding .
+[2025-12-03 16:17:59Z INFO JobExtension] Adding .
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:59Z INFO JobExtension] Total accessible running process: 339.
+[2025-12-03 16:17:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'bbe8190a-b0a8-4a87-beb8-a00752aa4f3e', success rate: 1/1.
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO JobExtension] Start checking service connectivity in background.
+[2025-12-03 16:17:59Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "setup_job",
+  "type": "runner",
+  "stage": "Pre",
+  "stepId": "bbe8190a-b0a8-4a87-beb8-a00752aa4f3e",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 5,
+  "startTime": "2025-12-03T16:17:54.921733Z",
+  "finishTime": "2025-12-03T16:17:59.6540777Z"
+}.
+[2025-12-03 16:17:59Z INFO JobRunner] Total job steps: 7.
+[2025-12-03 16:17:59Z INFO JobRunner] Run all job steps.
+[2025-12-03 16:17:59Z INFO StepsRunner] Processing step: DisplayName='Checkout repository'
+[2025-12-03 16:17:59Z INFO StepsRunner] Evaluating: success()
+[2025-12-03 16:17:59Z INFO StepsRunner] Result: true
+[2025-12-03 16:17:59Z INFO StepsRunner] Starting the step.
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO StepsRunner] Which2: 'chcp'
+[2025-12-03 16:17:59Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper] Starting process:
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   Working directory: 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper] Process started with process id 25476, waiting for process exit.
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper] Finished process 25476 with exit code 0, and elapsed time 00:00:00.0362279.
+[2025-12-03 16:17:59Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:59Z INFO ActionManager] Load action that reference repository from 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions\actions\checkout\v3'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 50,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 53,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 56,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 61,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 67,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 68,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 71,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-12-03 16:17:59Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-12-03 16:17:59Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-12-03 16:17:59Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2025-12-03 16:17:59Z INFO ExecutionContext] Reserve record order 9 to 16 for post job actions.
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Temp': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp'
+[2025-12-03 16:17:59Z INFO ExecutionContext] Write event payload to D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp\_github_workflow\event.json
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Temp': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp'
+[2025-12-03 16:17:59Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathFileCommand, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvFileCommand, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.CreateStepSummaryCommand, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateFileCommand, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputFileCommand, Runner.Worker
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'repository': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 6,
+  "col": 14,
+  "lit": "HasiniJa/Telemed"
+}
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'ref': default value evaluate result: ""
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 24,
+  "col": 14,
+  "lit": "***"
+}
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'ssh-key': default value evaluate result: ""
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'ssh-known-hosts': default value evaluate result: ""
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'ssh-strict': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 47,
+  "col": 14,
+  "lit": "true"
+}
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'persist-credentials': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 50,
+  "col": 14,
+  "lit": "true"
+}
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'path': default value evaluate result: ""
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'clean': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 55,
+  "col": 14,
+  "lit": "true"
+}
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'sparse-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 60,
+  "col": 14,
+  "lit": ""
+}
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'sparse-checkout-cone-mode': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 64,
+  "col": 14,
+  "lit": "true"
+}
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'fetch-depth': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 67,
+  "col": 14,
+  "lit": "1"
+}
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'fetch-tags': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 70,
+  "col": 14,
+  "lit": "false"
+}
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'lfs': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 73,
+  "col": 14,
+  "lit": "false"
+}
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'submodules': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 82,
+  "col": 14,
+  "lit": "false"
+}
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'set-safe-directory': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 85,
+  "col": 14,
+  "lit": "true"
+}
+[2025-12-03 16:17:59Z INFO ActionManifestManager] Input 'github-server-url': default value evaluate result: ""
+[2025-12-03 16:17:59Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.InternalPluginSetRepoPathCommandExtension, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetEnvCommandExtension, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SetOutputCommandExtension, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.SaveStateCommandExtension, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddPathCommandExtension, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMaskCommandExtension, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.AddMatcherCommandExtension, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.RemoveMatcherCommandExtension, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.WarningCommandExtension, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.ErrorCommandExtension, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.NoticeCommandExtension, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.DebugCommandExtension, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.GroupCommandExtension, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EndGroupCommandExtension, Runner.Worker
+[2025-12-03 16:17:59Z INFO ExtensionManager] Creating instance: GitHub.Runner.Worker.EchoCommandExtension, Runner.Worker
+[2025-12-03 16:17:59Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-12-03 16:17:59Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-12-03 16:17:59Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-12-03 16:17:59Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-12-03 16:17:59Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-12-03 16:17:59Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-12-03 16:17:59Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-12-03 16:17:59Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-12-03 16:17:59Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-12-03 16:17:59Z INFO ActionCommandManager] Register action command extension for command error
+[2025-12-03 16:17:59Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-12-03 16:17:59Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-12-03 16:17:59Z INFO ActionCommandManager] Register action command extension for command group
+[2025-12-03 16:17:59Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-12-03 16:17:59Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:17:59Z INFO HostContext] Well known directory 'Externals': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\externals'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper] Starting process:
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   File name: 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\externals\node20\bin\node.exe'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   Arguments: '"D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions\actions\checkout\v3\dist/index.js"'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   Working directory: 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\Telemed\Telemed'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-12-03 16:17:59Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-12-03 16:17:59Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-12-03 16:17:59Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag\blocks\863e355e-0c54-4a81-b428-594982a87ab8_bbe8190a-b0a8-4a87-beb8-a00752aa4f3e.1
+[2025-12-03 16:17:59Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2025-12-03 16:17:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:01Z INFO ProcessInvokerWrapper] Process started with process id 28044, waiting for process exit.
+[2025-12-03 16:18:01Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2025-12-03 16:18:01Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:01Z INFO AddMaskCommandExtension] Add new secret mask with length of 76
+[2025-12-03 16:18:02Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:02Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:04Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:04Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:05Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:05Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:08Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:09Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:09Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:18:09Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:18:09Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:18:10Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:10Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:11Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:12Z INFO JobServerQueue] Try to append 2 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 2/2.
+[2025-12-03 16:18:12Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:15Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:19Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:18:19Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:18:19Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:18:19Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:20Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:20Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:21Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:21Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:23Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:24Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:25Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:26Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:27Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:27Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:27Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:28Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:29Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:29Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:18:29Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:18:29Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:18:30Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:31Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:32Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:32Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:33Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:33Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:33Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:34Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:34Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:36Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:36Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:36Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:37Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:37Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:38Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:39Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:39Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:18:39Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:18:39Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:18:39Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:40Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:40Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:40Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:40Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:41Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:41Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:41Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:42Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:42Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:42Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:43Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:43Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:43Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:43Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:44Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:44Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:44Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:45Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:45Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:45Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:45Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:46Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:46Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:47Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:47Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:47Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:47Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:48Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:49Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:49Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:49Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:49Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:18:49Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:18:49Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:18:49Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:50Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:50Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:50Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:51Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:51Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:52Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:52Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:52Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:52Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:53Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:53Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:54Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:54Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:54Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:54Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:55Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:55Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:55Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:55Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:56Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:57Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:57Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:57Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:57Z INFO JobServerQueue] Stop aggressive process web console line queue.
+[2025-12-03 16:18:57Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:58Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper] Finished process 28044 with exit code 0, and elapsed time 00:00:59.0019568.
+[2025-12-03 16:18:58Z INFO CreateStepSummaryCommand] Step Summary file (D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp\_runner_file_commands\step_summary_4d5d1615-12d5-4420-b876-6c3f13c4c893) is empty; skipping attachment upload
+[2025-12-03 16:18:58Z INFO StepsRunner] Step result: 
+[2025-12-03 16:18:58Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/checkout",
+  "ref": "v3",
+  "type": "node20",
+  "stage": "Main",
+  "stepId": "f1cb79ab-d995-4106-aca1-2fb1c4f47e3a",
+  "stepContextName": "__actions_checkout",
+  "hasPreStep": false,
+  "hasPostStep": true,
+  "result": "succeeded",
+  "errorMessages": [
+    "no submodule mapping found in .gitmodules for path 'actions-runner/_work/Telemed/Telemed'",
+    "Unable to clean or reset the repository. The repository will be recreated instead."
+  ],
+  "executionTimeInSeconds": 60,
+  "startTime": "2025-12-03T16:17:59.681765Z",
+  "finishTime": "2025-12-03T16:18:58.7920485Z"
+}.
+[2025-12-03 16:18:58Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-12-03 16:18:58Z INFO StepsRunner] Current state: job state = ''
+[2025-12-03 16:18:58Z INFO StepsRunner] Processing step: DisplayName='Set up Node.js'
+[2025-12-03 16:18:58Z INFO StepsRunner] Evaluating: success()
+[2025-12-03 16:18:58Z INFO StepsRunner] Result: true
+[2025-12-03 16:18:58Z INFO StepsRunner] Starting the step.
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:18:58Z INFO StepsRunner] Which2: 'chcp'
+[2025-12-03 16:18:58Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper] Starting process:
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   Working directory: 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper] Process started with process id 26900, waiting for process exit.
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper] Finished process 26900 with exit code 0, and elapsed time 00:00:00.0167238.
+[2025-12-03 16:18:58Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:18:58Z INFO ActionManager] Load action that reference repository from 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions\actions\setup-node\v3'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:18:58Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f1cb79ab-d995-4106-aca1-2fb1c4f47e3a', success rate: 1/1.
+[2025-12-03 16:18:58Z INFO ActionManifestManager] Ignore action property author.
+[2025-12-03 16:18:58Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Setup Node.js environment",
+  "description": "Setup a Node.js environment by adding problem matchers and optionally downloading and adding it to the PATH.",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 5,
+          "col": 3,
+          "lit": "always-auth"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 7,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 8,
+          "col": 3,
+          "lit": "node-version"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 10,
+          "col": 3,
+          "lit": "node-version-file"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 12,
+          "col": 3,
+          "lit": "architecture"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 14,
+          "col": 3,
+          "lit": "check-latest"
+        },
+        "value": {
+          "type": 0,
+          "file": 3,
+          "line": 16,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 17,
+          "col": 3,
+          "lit": "registry-url"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 19,
+          "col": 3,
+          "lit": "scope"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 21,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 3,
+          "line": 23,
+          "col": 14,
+          "expr": "github.server_url == 'https://github.com' && github.token || ''"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 24,
+          "col": 3,
+          "lit": "cache"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 3,
+          "line": 26,
+          "col": 3,
+          "lit": "cache-dependency-path"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/setup/index.js",
+    "pre": null,
+    "post": "dist/cache-save/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "success()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-12-03 16:18:58Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-12-03 16:18:58Z INFO ActionManager] Action node.js file: dist/setup/index.js.
+[2025-12-03 16:18:58Z INFO ActionManager] Action post node.js file: dist/cache-save/index.js.
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Temp': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp'
+[2025-12-03 16:18:58Z INFO ExecutionContext] Write event payload to D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp\_github_workflow\event.json
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Temp': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp'
+[2025-12-03 16:18:58Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-12-03 16:18:58Z INFO ActionManifestManager] Input 'always-auth': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 7,
+  "col": 14,
+  "lit": "false"
+}
+[2025-12-03 16:18:58Z INFO ActionManifestManager] Input 'node-version-file': default value evaluate result: ""
+[2025-12-03 16:18:58Z INFO ActionManifestManager] Input 'architecture': default value evaluate result: ""
+[2025-12-03 16:18:58Z INFO ActionManifestManager] Input 'check-latest': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 16,
+  "col": 14,
+  "lit": "false"
+}
+[2025-12-03 16:18:58Z INFO ActionManifestManager] Input 'registry-url': default value evaluate result: ""
+[2025-12-03 16:18:58Z INFO ActionManifestManager] Input 'scope': default value evaluate result: ""
+[2025-12-03 16:18:58Z INFO ActionManifestManager] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 3,
+  "line": 23,
+  "col": 14,
+  "lit": "***"
+}
+[2025-12-03 16:18:58Z INFO ActionManifestManager] Input 'cache': default value evaluate result: ""
+[2025-12-03 16:18:58Z INFO ActionManifestManager] Input 'cache-dependency-path': default value evaluate result: ""
+[2025-12-03 16:18:58Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-12-03 16:18:58Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-12-03 16:18:58Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-12-03 16:18:58Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-12-03 16:18:58Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-12-03 16:18:58Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-12-03 16:18:58Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-12-03 16:18:58Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-12-03 16:18:58Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-12-03 16:18:58Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-12-03 16:18:58Z INFO ActionCommandManager] Register action command extension for command error
+[2025-12-03 16:18:58Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-12-03 16:18:58Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-12-03 16:18:58Z INFO ActionCommandManager] Register action command extension for command group
+[2025-12-03 16:18:58Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-12-03 16:18:58Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:18:58Z INFO HostContext] Well known directory 'Externals': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\externals'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper] Starting process:
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   File name: 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\externals\node20\bin\node.exe'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   Arguments: '"D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions\actions\setup-node\v3\dist/setup/index.js"'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   Working directory: 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\Telemed\Telemed'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-12-03 16:18:58Z INFO ProcessInvokerWrapper] Process started with process id 24092, waiting for process exit.
+[2025-12-03 16:18:59Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-12-03 16:18:59Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag\blocks\863e355e-0c54-4a81-b428-594982a87ab8_f1cb79ab-d995-4106-aca1-2fb1c4f47e3a.1
+[2025-12-03 16:18:59Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2025-12-03 16:18:59Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'fe6dd2ab-b7b9-4a0a-bfed-43722944c7eb', success rate: 1/1.
+[2025-12-03 16:18:59Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2025-12-03 16:18:59Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:18:59Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:18:59Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:19:00Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'fe6dd2ab-b7b9-4a0a-bfed-43722944c7eb', success rate: 1/1.
+[2025-12-03 16:19:09Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:19:09Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:19:09Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:19:19Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:19:19Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:19:19Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper] Finished process 24092 with exit code 0, and elapsed time 00:00:23.8618550.
+[2025-12-03 16:19:22Z INFO CreateStepSummaryCommand] Step Summary file (D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp\_runner_file_commands\step_summary_a68d38f0-0845-43c3-a9f7-590392b5a0aa) is empty; skipping attachment upload
+[2025-12-03 16:19:22Z INFO StepsRunner] Step result: 
+[2025-12-03 16:19:22Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/setup-node",
+  "ref": "v3",
+  "type": "node20",
+  "stage": "Main",
+  "stepId": "fe6dd2ab-b7b9-4a0a-bfed-43722944c7eb",
+  "stepContextName": "__actions_setup-node",
+  "hasPreStep": false,
+  "hasPostStep": true,
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 24,
+  "startTime": "2025-12-03T16:18:58.7948836Z",
+  "finishTime": "2025-12-03T16:19:22.6982271Z"
+}.
+[2025-12-03 16:19:22Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-12-03 16:19:22Z INFO StepsRunner] Current state: job state = ''
+[2025-12-03 16:19:22Z INFO StepsRunner] Processing step: DisplayName='Install dependencies & run tests'
+[2025-12-03 16:19:22Z INFO StepsRunner] Evaluating: success()
+[2025-12-03 16:19:22Z INFO StepsRunner] Result: true
+[2025-12-03 16:19:22Z INFO StepsRunner] Starting the step.
+[2025-12-03 16:19:22Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:19:22Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:19:22Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:19:22Z INFO StepsRunner] Which2: 'chcp'
+[2025-12-03 16:19:22Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper] Starting process:
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   Working directory: 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper] Process started with process id 28844, waiting for process exit.
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper] Finished process 28844 with exit code 0, and elapsed time 00:00:00.0160486.
+[2025-12-03 16:19:22Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2025-12-03 16:19:22Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:19:22Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:19:22Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:19:22Z INFO HostContext] Well known directory 'Temp': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp'
+[2025-12-03 16:19:22Z INFO ExecutionContext] Write event payload to D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp\_github_workflow\event.json
+[2025-12-03 16:19:22Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:19:22Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:19:22Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:19:22Z INFO HostContext] Well known directory 'Temp': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp'
+[2025-12-03 16:19:22Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-12-03 16:19:22Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-12-03 16:19:22Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-12-03 16:19:22Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-12-03 16:19:22Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-12-03 16:19:22Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-12-03 16:19:22Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-12-03 16:19:22Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-12-03 16:19:22Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-12-03 16:19:22Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-12-03 16:19:22Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-12-03 16:19:22Z INFO ActionCommandManager] Register action command extension for command error
+[2025-12-03 16:19:22Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-12-03 16:19:22Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-12-03 16:19:22Z INFO ActionCommandManager] Register action command extension for command group
+[2025-12-03 16:19:22Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-12-03 16:19:22Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-12-03 16:19:22Z INFO ScriptHandler] Which2: 'pwsh'
+[2025-12-03 16:19:22Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2025-12-03 16:19:22Z INFO ScriptHandler] Defaulting to powershell
+[2025-12-03 16:19:22Z INFO ScriptHandler] Which2: 'powershell'
+[2025-12-03 16:19:22Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-12-03 16:19:22Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:19:22Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:19:22Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:19:22Z INFO HostContext] Well known directory 'Temp': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp'
+[2025-12-03 16:19:22Z INFO ScriptHandler] Which2: 'pwsh'
+[2025-12-03 16:19:22Z INFO ScriptHandler] pwsh: command not found. Make sure 'pwsh' is installed and its location included in the 'Path' environment variable.
+[2025-12-03 16:19:22Z INFO ScriptHandler] Defaulting to powershell
+[2025-12-03 16:19:22Z INFO ScriptHandler] Which2: 'powershell'
+[2025-12-03 16:19:22Z INFO ScriptHandler] Location: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper] Starting process:
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\System32\WindowsPowerShell\v1.0\powershell.EXE'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   Arguments: '-command ". 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp\179d26cf-ab62-4b07-b127-42b5bfe4e730.ps1'"'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   Working directory: 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\Telemed\Telemed'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-12-03 16:19:22Z INFO ProcessInvokerWrapper] Process started with process id 26936, waiting for process exit.
+[2025-12-03 16:19:22Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'fe6dd2ab-b7b9-4a0a-bfed-43722944c7eb', success rate: 1/1.
+[2025-12-03 16:19:22Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f95745fa-7668-48dc-8523-402df2025add', success rate: 1/1.
+[2025-12-03 16:19:23Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-12-03 16:19:23Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag\blocks\863e355e-0c54-4a81-b428-594982a87ab8_fe6dd2ab-b7b9-4a0a-bfed-43722944c7eb.1
+[2025-12-03 16:19:23Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2025-12-03 16:19:23Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper] Finished process 26936 with exit code 1, and elapsed time 00:00:01.5645187.
+[2025-12-03 16:19:24Z INFO CreateStepSummaryCommand] Step Summary file (D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp\_runner_file_commands\step_summary_69cda736-a746-4ccf-9907-aa6432212b0d) is empty; skipping attachment upload
+[2025-12-03 16:19:24Z INFO StepsRunner] Step result: Failed
+[2025-12-03 16:19:24Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "powershell",
+  "type": "run",
+  "stage": "Main",
+  "stepId": "f95745fa-7668-48dc-8523-402df2025add",
+  "stepContextName": "__run",
+  "result": "failed",
+  "errorMessages": [
+    "Process completed with exit code 1."
+  ],
+  "executionTimeInSeconds": 2,
+  "startTime": "2025-12-03T16:19:22.6995499Z",
+  "finishTime": "2025-12-03T16:19:24.3222534Z"
+}.
+[2025-12-03 16:19:24Z INFO StepsRunner] Update job result with current step result 'Failed'.
+[2025-12-03 16:19:24Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-12-03 16:19:24Z INFO StepsRunner] Processing step: DisplayName='Log in to Docker Hub'
+[2025-12-03 16:19:24Z INFO StepsRunner] Evaluating: success()
+[2025-12-03 16:19:24Z INFO StepsRunner] Result: false
+[2025-12-03 16:19:24Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2025-12-03 16:19:24Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2025-12-03 16:19:24Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-12-03 16:19:24Z INFO StepsRunner] Processing step: DisplayName='Build & push Docker images'
+[2025-12-03 16:19:24Z INFO StepsRunner] Evaluating: success()
+[2025-12-03 16:19:24Z INFO StepsRunner] Result: false
+[2025-12-03 16:19:24Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2025-12-03 16:19:24Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2025-12-03 16:19:24Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-12-03 16:19:24Z INFO StepsRunner] Processing step: DisplayName='Apply Kubernetes manifests'
+[2025-12-03 16:19:24Z INFO StepsRunner] Evaluating: success()
+[2025-12-03 16:19:24Z INFO StepsRunner] Result: false
+[2025-12-03 16:19:24Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2025-12-03 16:19:24Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2025-12-03 16:19:24Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-12-03 16:19:24Z INFO StepsRunner] Processing step: DisplayName='Restart deployments'
+[2025-12-03 16:19:24Z INFO StepsRunner] Evaluating: success()
+[2025-12-03 16:19:24Z INFO StepsRunner] Result: false
+[2025-12-03 16:19:24Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2025-12-03 16:19:24Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2025-12-03 16:19:24Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-12-03 16:19:24Z INFO StepsRunner] Processing step: DisplayName='Post Set up Node.js'
+[2025-12-03 16:19:24Z INFO StepsRunner] Evaluating: success()
+[2025-12-03 16:19:24Z INFO StepsRunner] Result: false
+[2025-12-03 16:19:24Z INFO StepsRunner] Skipping step due to condition evaluation.
+[2025-12-03 16:19:24Z INFO StepsRunner] No need for updating job result with current step result 'Skipped'.
+[2025-12-03 16:19:24Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-12-03 16:19:24Z INFO StepsRunner] Processing step: DisplayName='Post Checkout repository'
+[2025-12-03 16:19:24Z INFO StepsRunner] Evaluating: always()
+[2025-12-03 16:19:24Z INFO StepsRunner] Result: true
+[2025-12-03 16:19:24Z INFO StepsRunner] Starting the step.
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:19:24Z INFO StepsRunner] Which2: 'chcp'
+[2025-12-03 16:19:24Z INFO StepsRunner] Location: 'C:\WINDOWS\system32\chcp.COM'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper] Starting process:
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   File name: 'C:\WINDOWS\system32\chcp.COM'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   Arguments: '65001'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   Working directory: 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   Encoding web name:  ; code page: ''
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper] Process started with process id 23268, waiting for process exit.
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper] Finished process 23268 with exit code 0, and elapsed time 00:00:00.0166392.
+[2025-12-03 16:19:24Z INFO StepsRunner] Successfully returned to code page 65001 (UTF8)
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:19:24Z INFO ActionManager] Load action that reference repository from 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions\actions\checkout\v3'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Actions': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions'
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Loaded action.yml file: {
+  "name": "Checkout",
+  "description": "Checkout a Git repository at a particular version",
+  "inputs": {
+    "type": 2,
+    "map": [
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 4,
+          "col": 3,
+          "lit": "repository"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 6,
+          "col": 14,
+          "expr": "github.repository"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 7,
+          "col": 3,
+          "lit": "ref"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 12,
+          "col": 3,
+          "lit": "token"
+        },
+        "value": {
+          "type": 3,
+          "file": 2,
+          "line": 24,
+          "col": 14,
+          "expr": "github.token"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 25,
+          "col": 3,
+          "lit": "ssh-key"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 37,
+          "col": 3,
+          "lit": "ssh-known-hosts"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 42,
+          "col": 3,
+          "lit": "ssh-strict"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 47,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 48,
+          "col": 3,
+          "lit": "persist-credentials"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 50,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 51,
+          "col": 3,
+          "lit": "path"
+        },
+        "value": ""
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 53,
+          "col": 3,
+          "lit": "clean"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 55,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 56,
+          "col": 3,
+          "lit": "sparse-checkout"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 60,
+          "col": 14,
+          "lit": ""
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 61,
+          "col": 3,
+          "lit": "sparse-checkout-cone-mode"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 64,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 65,
+          "col": 3,
+          "lit": "fetch-depth"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 67,
+          "col": 14,
+          "lit": "1"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 68,
+          "col": 3,
+          "lit": "fetch-tags"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 70,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 71,
+          "col": 3,
+          "lit": "lfs"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 73,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 74,
+          "col": 3,
+          "lit": "submodules"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 82,
+          "col": 14,
+          "lit": "false"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 83,
+          "col": 3,
+          "lit": "set-safe-directory"
+        },
+        "value": {
+          "type": 0,
+          "file": 2,
+          "line": 85,
+          "col": 14,
+          "lit": "true"
+        }
+      },
+      {
+        "key": {
+          "type": 0,
+          "file": 2,
+          "line": 86,
+          "col": 3,
+          "lit": "github-server-url"
+        },
+        "value": ""
+      }
+    ]
+  },
+  "execution": {
+    "executionType": "nodeJS",
+    "hasPre": false,
+    "hasPost": true,
+    "script": "dist/index.js",
+    "pre": null,
+    "post": "dist/index.js",
+    "nodeVersion": "node16",
+    "cleanupCondition": "always()",
+    "initCondition": "always()"
+  },
+  "deprecated": null
+}
+[2025-12-03 16:19:24Z INFO ActionManager] Action pre node.js file: N/A.
+[2025-12-03 16:19:24Z INFO ActionManager] Action node.js file: dist/index.js.
+[2025-12-03 16:19:24Z INFO ActionManager] Action post node.js file: dist/index.js.
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Temp': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp'
+[2025-12-03 16:19:24Z INFO ExecutionContext] Write event payload to D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp\_github_workflow\event.json
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Work': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Temp': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp'
+[2025-12-03 16:19:24Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IFileCommandExtension'
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'repository': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 6,
+  "col": 14,
+  "lit": "HasiniJa/Telemed"
+}
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'ref': default value evaluate result: ""
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'token': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 24,
+  "col": 14,
+  "lit": "***"
+}
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'ssh-key': default value evaluate result: ""
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'ssh-known-hosts': default value evaluate result: ""
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'ssh-strict': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 47,
+  "col": 14,
+  "lit": "true"
+}
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'persist-credentials': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 50,
+  "col": 14,
+  "lit": "true"
+}
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'path': default value evaluate result: ""
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'clean': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 55,
+  "col": 14,
+  "lit": "true"
+}
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'sparse-checkout': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 60,
+  "col": 14,
+  "lit": ""
+}
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'sparse-checkout-cone-mode': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 64,
+  "col": 14,
+  "lit": "true"
+}
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'fetch-depth': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 67,
+  "col": 14,
+  "lit": "1"
+}
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'fetch-tags': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 70,
+  "col": 14,
+  "lit": "false"
+}
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'lfs': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 73,
+  "col": 14,
+  "lit": "false"
+}
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'submodules': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 82,
+  "col": 14,
+  "lit": "false"
+}
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'set-safe-directory': default value evaluate result: {
+  "type": 0,
+  "file": 2,
+  "line": 85,
+  "col": 14,
+  "lit": "true"
+}
+[2025-12-03 16:19:24Z INFO ActionManifestManager] Input 'github-server-url': default value evaluate result: ""
+[2025-12-03 16:19:24Z INFO ExtensionManager] Getting extensions for interface: 'GitHub.Runner.Worker.IActionCommandExtension'
+[2025-12-03 16:19:24Z INFO ActionCommandManager] Register action command extension for command internal-set-repo-path
+[2025-12-03 16:19:24Z INFO ActionCommandManager] Register action command extension for command set-env
+[2025-12-03 16:19:24Z INFO ActionCommandManager] Register action command extension for command set-output
+[2025-12-03 16:19:24Z INFO ActionCommandManager] Register action command extension for command save-state
+[2025-12-03 16:19:24Z INFO ActionCommandManager] Register action command extension for command add-path
+[2025-12-03 16:19:24Z INFO ActionCommandManager] Register action command extension for command add-mask
+[2025-12-03 16:19:24Z INFO ActionCommandManager] Register action command extension for command add-matcher
+[2025-12-03 16:19:24Z INFO ActionCommandManager] Register action command extension for command remove-matcher
+[2025-12-03 16:19:24Z INFO ActionCommandManager] Register action command extension for command warning
+[2025-12-03 16:19:24Z INFO ActionCommandManager] Register action command extension for command error
+[2025-12-03 16:19:24Z INFO ActionCommandManager] Register action command extension for command notice
+[2025-12-03 16:19:24Z INFO ActionCommandManager] Register action command extension for command debug
+[2025-12-03 16:19:24Z INFO ActionCommandManager] Register action command extension for command group
+[2025-12-03 16:19:24Z INFO ActionCommandManager] Register action command extension for command endgroup
+[2025-12-03 16:19:24Z INFO ActionCommandManager] Register action command extension for command echo
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:19:24Z INFO HostContext] Well known directory 'Externals': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\externals'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper] Starting process:
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   File name: 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\externals\node20\bin\node.exe'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   Arguments: '"D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_actions\actions\checkout\v3\dist/index.js"'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   Working directory: 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\Telemed\Telemed'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   Require exit code zero: 'False'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   Encoding web name: utf-8 ; code page: '65001'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   Force kill process on cancellation: 'False'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   Redirected STDIN: 'False'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   Persist current code page: 'True'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   Keep redirected STDIN open: 'False'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper]   High priority process: 'False'
+[2025-12-03 16:19:24Z INFO ProcessInvokerWrapper] Process started with process id 14716, waiting for process exit.
+[2025-12-03 16:19:24Z INFO JobServerQueue] Try to append 1 batches web console lines for record 'f95745fa-7668-48dc-8523-402df2025add', success rate: 1/1.
+[2025-12-03 16:19:24Z INFO JobServerQueue] Try to append 1 batches web console lines for record '6b682d8d-0762-4fb4-b107-0db5271da0f1', success rate: 1/1.
+[2025-12-03 16:19:24Z INFO AddMaskCommandExtension] Add new secret mask with length of 32
+[2025-12-03 16:19:24Z INFO JobServerQueue] Try to upload 1 log files or attachments, success rate: 1/1.
+[2025-12-03 16:19:24Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-12-03 16:19:24Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag\blocks\863e355e-0c54-4a81-b428-594982a87ab8_f95745fa-7668-48dc-8523-402df2025add.1
+[2025-12-03 16:19:24Z INFO JobServerQueue] Tried to upload 1 file(s) to results, success rate: 1/1.
+[2025-12-03 16:19:24Z INFO JobServerQueue] Try to append 1 batches web console lines for record '6b682d8d-0762-4fb4-b107-0db5271da0f1', success rate: 1/1.
+[2025-12-03 16:19:26Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-12-03 16:19:26Z INFO ProcessInvokerWrapper] STDOUT/STDERR stream read finished.
+[2025-12-03 16:19:26Z INFO ProcessInvokerWrapper] Finished process 14716 with exit code 0, and elapsed time 00:00:01.9773494.
+[2025-12-03 16:19:26Z INFO CreateStepSummaryCommand] Step Summary file (D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp\_runner_file_commands\step_summary_da7467eb-de3e-4a57-88d2-bf79f325bfb0) is empty; skipping attachment upload
+[2025-12-03 16:19:26Z INFO StepsRunner] Step result: 
+[2025-12-03 16:19:26Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "actions/checkout",
+  "ref": "v3",
+  "type": "node20",
+  "stage": "Post",
+  "stepId": "6b682d8d-0762-4fb4-b107-0db5271da0f1",
+  "result": "succeeded",
+  "errorMessages": [
+    "The process 'C:\\Program Files\\Git\\cmd\\git.exe' failed with exit code 128"
+  ],
+  "executionTimeInSeconds": 3,
+  "startTime": "2025-12-03T16:19:24.3251069Z",
+  "finishTime": "2025-12-03T16:19:26.3327819Z"
+}.
+[2025-12-03 16:19:26Z INFO StepsRunner] No need for updating job result with current step result 'Succeeded'.
+[2025-12-03 16:19:26Z INFO StepsRunner] Current state: job state = 'Failed'
+[2025-12-03 16:19:26Z INFO JobRunner] Finalize job.
+[2025-12-03 16:19:26Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:19:26Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:19:26Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:19:26Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:19:26Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:19:26Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:19:26Z INFO JobExtension] Initialize Env context
+[2025-12-03 16:19:26Z INFO JobExtension] Initialize steps context
+[2025-12-03 16:19:26Z INFO JobExtension] Total accessible running process: 335.
+[2025-12-03 16:19:26Z INFO JobExtension] Inspecting process environment variables. PID: 29636 (git)
+[2025-12-03 16:19:26Z INFO JobExtension] Inspecting process environment variables. PID: 29560 (conhost)
+[2025-12-03 16:19:26Z INFO JobExtension] Inspecting process environment variables. PID: 28772 (git)
+[2025-12-03 16:19:26Z INFO ExecutionContext] Publish step telemetry for current step {
+  "action": "complete_job",
+  "type": "runner",
+  "stage": "Post",
+  "stepId": "9d061658-756f-4b9e-b778-5d91263635ac",
+  "result": "succeeded",
+  "errorMessages": [],
+  "executionTimeInSeconds": 1,
+  "startTime": "2025-12-03T16:19:26.3422249Z",
+  "finishTime": "2025-12-03T16:19:26.4019187Z"
+}.
+[2025-12-03 16:19:26Z INFO JobRunner] Job result after all job steps finish: Failed
+[2025-12-03 16:19:26Z INFO JobRunner] Completing the job execution context.
+[2025-12-03 16:19:26Z INFO JobRunner] Shutting down the job server queue.
+[2025-12-03 16:19:26Z INFO JobServerQueue] Fire signal to shutdown all queues.
+[2025-12-03 16:19:26Z INFO JobServerQueue] All queue process task stopped.
+[2025-12-03 16:19:26Z INFO JobServerQueue] Try to append 1 batches web console lines for record '6b682d8d-0762-4fb4-b107-0db5271da0f1', success rate: 1/1.
+[2025-12-03 16:19:26Z INFO JobServerQueue] Try to append 1 batches web console lines for record '9d061658-756f-4b9e-b778-5d91263635ac', success rate: 1/1.
+[2025-12-03 16:19:26Z INFO JobServerQueue] Web console line queue drained.
+[2025-12-03 16:19:26Z INFO JobServerQueue] Uploading 3 files in one shot.
+[2025-12-03 16:19:26Z INFO JobServerQueue] Try to upload 3 log files or attachments, success rate: 3/3.
+[2025-12-03 16:19:26Z INFO JobServerQueue] File upload queue drained.
+[2025-12-03 16:19:26Z INFO JobServerQueue] Starting results-based upload queue...
+[2025-12-03 16:19:26Z INFO JobServerQueue] Uploading 3 file(s) in one shot through results service.
+[2025-12-03 16:19:26Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-12-03 16:19:26Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag\blocks\863e355e-0c54-4a81-b428-594982a87ab8_6b682d8d-0762-4fb4-b107-0db5271da0f1.1
+[2025-12-03 16:19:27Z INFO JobServerQueue] Got a step log file to send to results service.
+[2025-12-03 16:19:27Z INFO JobServerQueue] Starting upload of step log file to results service ResultsLog, D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag\blocks\863e355e-0c54-4a81-b428-594982a87ab8_9d061658-756f-4b9e-b778-5d91263635ac.1
+[2025-12-03 16:19:27Z INFO JobServerQueue] Got a job log file to send to results service.
+[2025-12-03 16:19:27Z INFO JobServerQueue] Starting upload of job log file to results service ResultsLog, D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag\blocks\863e355e-0c54-4a81-b428-594982a87ab8_f95a7b45-b634-5ec4-9aa6-0136dbb48134.1
+[2025-12-03 16:19:27Z INFO JobServerQueue] Tried to upload 3 file(s) to results, success rate: 3/3.
+[2025-12-03 16:19:27Z INFO JobServerQueue] Results upload queue drained.
+[2025-12-03 16:19:27Z INFO JobServerQueue] Timeline update queue drained.
+[2025-12-03 16:19:27Z INFO JobServerQueue] Disposing job server ...
+[2025-12-03 16:19:27Z INFO JobServerQueue] Disposing results server ...
+[2025-12-03 16:19:27Z INFO JobServerQueue] All queue process tasks have been stopped, and all queues are drained.
+[2025-12-03 16:19:27Z INFO TempDirectoryManager] Cleaning runner temp folder: D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_work\_temp
+[2025-12-03 16:19:27Z INFO HostContext] Well known directory 'Bin': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\bin'
+[2025-12-03 16:19:27Z INFO HostContext] Well known directory 'Root': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner'
+[2025-12-03 16:19:27Z INFO HostContext] Well known directory 'Diag': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag'
+[2025-12-03 16:19:27Z INFO HostContext] Well known config file 'Telemetry': 'D:\4thSemester\SOA\Final Project\Telemed\actions-runner\_diag\.telemetry'
+[2025-12-03 16:19:27Z INFO JobRunner] Raising job completed against run service
+[2025-12-03 16:19:27Z INFO Worker] Job completed.
