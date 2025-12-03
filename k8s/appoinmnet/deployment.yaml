@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: appointment
-          image: hasinij4567/appointment-service:1.0
+          image: hasinij4567/appointment-service:1.2
           imagePullPolicy: Always
           ports:
             - containerPort: 5001
