@@ -9,7 +9,12 @@ on:
 
 jobs:
   build-test-deploy:
-    runs-on: self-hosted   # Use your local runner
+    runs-on: self-hosted   # Use your self-hosted runner
+
+    env:
+      MONGO_URI: ${{ secrets.MONGO_URI }}
+      JWT_SECRET: ${{ secrets.JWT_SECRET }}
+      NODE_ENV: production
 
     steps:
       # Step 1: Checkout repository
@@ -22,13 +27,14 @@ jobs:
         with:
           node-version: 18
 
-      # Step 3: Run tests for all microservices
+      # Step 3: Install dependencies & run Jest tests for all services
       - name: Install dependencies & run tests
         run: |
-          cd appointment && npm install && npm test && cd ..
-          cd doctor && npm install && npm test && cd ..
-          cd patient && npm install && npm test && cd ..
-          cd notification && npm install && npm test
+          set -e
+          cd appoinment_service && npm install && npm run test && cd ..
+          cd doctor_service && npm install && npm run test && cd ..
+          cd patient_service && npm install && npm run test && cd ..
+          cd notification_service && npm install && npm run test
 
       # Step 4: Login to Docker Hub
       - name: Log in to Docker Hub
@@ -37,25 +43,30 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      # Step 5: Build and push Docker images to Docker Hub
+      # Step 5: Build & push Docker images
       - name: Build & push Docker images
         run: |
-          docker build -t hasinij4567/appointment-service:1.0 appointment
-          docker build -t hasinij4567/doctor-service:1.0 doctor
-          docker build -t hasinij4567/patient-service:1.0 patient
-          docker build -t hasinij4567/notification-service:1.0 notification
+          docker build -t hasinij4567/appointment-service:1.0 ./appointment_service
+          docker build -t hasinij4567/doctor-service:1.0 ./doctor_service
+          docker build -t hasinij4567/patient-service:1.0 ./patient_service
+          docker build -t hasinij4567/notification-service:1.0 ./notification_service
 
           docker push hasinij4567/appointment-service:1.0
           docker push hasinij4567/doctor-service:1.0
           docker push hasinij4567/patient-service:1.0
           docker push hasinij4567/notification-service:1.0
 
-      # Step 6: Apply Kubernetes manifests
+      # Step 6: Create namespace if not exists
+      - name: Ensure Kubernetes namespace exists
+        run: |
+          kubectl create namespace telemed --dry-run=client -o yaml | kubectl apply -f -
+
+      # Step 7: Apply Kubernetes manifests
       - name: Apply Kubernetes manifests
         run: |
           kubectl apply -R -f k8s/ -n telemed
 
-      # Step 7: Restart deployments to pull new images
+      # Step 8: Restart deployments to pull new images
       - name: Restart deployments
         run: |
           kubectl rollout restart deployment appointment-deployment -n telemed
